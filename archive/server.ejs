@@ -1,0 +1,53 @@
+<%- include('blocks/header', {bot, user, path, guild, guildID, points, channels, values}) %>
+<!-- chartjs script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<div class="container">
+  <h1><%= guild.name %></h1>
+  <br />
+  <% let guilds = []; user.guilds.forEach(g => guilds.push(g.id)); %> 
+  <% if (guilds.indexOf(guildID)!= -1 || bot.config.admins.indexOf(user.id) != -1) { %>
+  <div class="row">
+    <div class="col col-4"><%- include("blocks/guild-card", {guild}) %></div>
+    <div class="diagram">
+      <canvas id="message-chart" role="img" height="100" width="100"></canvas>
+      <script type="text/javascript">
+        var canvas = document.getElementById("message-chart").getContext("2d"),
+        color = "#7289da",
+        channels = <%- channels %>,
+        values = <%- values %>,
+        chart = new Chart(canvas, {
+          type: 'bar',
+          data: {
+              labels: channels,
+              datasets: [{
+                  label: 'Messages sent - last 24 hours',
+                  data: values,
+                  backgroundColor: color,
+                  hoverBackgroundColor: color
+              }]
+          }
+      });
+      </script>
+    </div>
+  </div>
+  <br/>
+    <iframe
+      class="card-p"
+      style="margin-left:1%;"
+      src="
+        https://discordapp.com/widget?id=<%=guild.id%>&theme=dark"
+      width="350"
+      height="500"
+      allowtransparency="true"
+      frameborder="0"
+    ></iframe>
+  </div>
+  </div>
+    <% } else { %>
+    <p class="txt">
+      You're not a member of that guild ;)
+    </p>
+    <% } %>
+  </div>
+
+  <% include ./blocks/footer %>

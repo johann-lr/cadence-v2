@@ -1,0 +1,12 @@
+<%- include('blocks/header', {bot, user, path}) %>
+<canvas width="800" height="800" id="bg" style="position: fixed;"></canvas>
+<div class="container">
+	<script src="/public/scripts/background-c.js"></script>
+	<div class="jumbotron">
+		<div>
+			<h1 class="text-warning">An <strong>Error </strong>Occured During the Authentification</h1>
+			<p style="color: orange">Something went wrong here...</p>
+		</div>
+	</div>
+</div>
+<% include ./blocks/footer %>

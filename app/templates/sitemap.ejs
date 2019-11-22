@@ -1,0 +1,66 @@
+<%- include('blocks/header', {bot, user, path}) %>
+<div class="container">
+	<h1>Sitemap</h1>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<a class="text-white" href="/demo">Demopage</a>
+		</li>
+		<li class="list-group-item">
+			<a class="text-white" href="/commands">Commands</a>
+			<ul>
+				<li class="list-group-item">
+					<a class="text-white" href="/commands/musik">Cadence</a>
+				</li>
+				<li class="list-group-item">
+					<a class="text-white" href="/commands/bonbonbot">BonBonBot</a>
+				</li>
+				<li class="list-group-item">
+					<a class="text-white" href="/commands/hbb">Himbeerbonbon</a>
+				</li>
+			</ul>
+		</li>
+		<li class="list-group-item">
+			<a class="text-white" href="/bot">Bot</a>
+		</li>
+		<li class="list-group-item">
+			<a class="text-white" href="/music">Musik</a>
+			<ul>
+				<li class="list-group-item">
+					Guild-ID
+				</li>
+			</ul>
+		</li>
+		<li class="list-group-item">
+			<a class="text-white" href="/guilds">Guilds</a>
+			<ul>
+				<li class="list-group-item">
+					Guild-ID
+				</li>
+			</ul>
+		</li>
+		<li class="list-group-item">
+			<a class="text-white" href="/admin">Admin</a>
+			<ul>
+				<li class="list-group-item">
+					Logs
+				</li>
+				<li class="list-group-item">
+					Guilds
+				</li>
+				<li class="list-group-item">
+					Manage
+				</li>
+			</ul>
+		</li>
+		<li class="list-group-item">
+			<a class="text-white" href="/changes">Changelog</a>
+		</li>
+		<li class="list-group-item">
+			<a class="text-white" href="/impressum">Impressum</a>
+		</li>
+		<li class="list-group-item">
+			Sitemap
+		</li>
+	</ul>
+</div>
+<% include ./blocks/footer %>

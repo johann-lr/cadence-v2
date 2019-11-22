@@ -1,0 +1,76 @@
+<%- include('blocks/header', {bot, user, path}) %>
+<div class="container">
+	<div class="jumbotron">
+		<div>
+			<h1 id="music-control-heading">Music Control Cadence-Demo Server</h1>
+			<div class="box form-control-theme">
+				<form class="music-form">
+					<button class="controlButton">
+						<i class="fas fa-pause"></i>
+					</button>
+				</form>
+				<form class="music-form">
+					<button class="controlButton">
+						<i class="fas fa-forward"></i>
+					</button>
+				</form>
+				<form class="music-form">
+					<button class="controlButton title">
+						<i class="fas fa-stop"></i>
+					</button>
+				</form>
+				<a id="song-link">
+					Bitch Lasagna - pewdiepie, Party in Backyard
+				</a>
+				<p id="song-connect">Connected in #voicechannel</p>
+				<progress max="530" value="238" class="main-progress"> </progress>
+				<span class="txt"> 1:29 / 2:14</span>
+			</div>
+			<form class="form-control-theme">
+				<label class="txt" for="volume">Volume (80%)</label>
+				<input type="range" min="1" max="200" value="80" class="slider" name="vl" />
+			</form>
+			<form class="form-control-theme" autocomplete="off">
+				<label class="txt" for="title">Title</label>
+				<input class="inputTxt" type="text" name="title" maxlength="100" />
+				<button id="add" value="Zur Warteschlange"><i class="fas fa-plus"></i></button>
+			</form>
+		</div>
+		<div>
+			<br />
+			<br />
+			<h4>Queue</h4>
+			<br />
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Added by</th>
+						<th>
+							<button class="btnIn"><a class="title">Clear</a></button>
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>
+							<a class="linki"> Bitch Lasagna - pewdiepie, Party in Backyard</a>
+						</td>
+						<td>
+							Cadence-user#9999
+						</td>
+						<td>
+							<form class="removeFromQ">
+								<button class="controlButton" name="position">
+									<i class="far fa-trash-alt"></i>
+								</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<% include ./blocks/footer %>

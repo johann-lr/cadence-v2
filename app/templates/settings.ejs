@@ -1,0 +1,80 @@
+<%- include('blocks/header', {bot, user, path, guild, lang, prefix}) %>
+<div class="container">
+	<h1>Settings - <%= bot.guilds.get(guild).name %></h1>
+
+	<script>
+		// store guild id somewhere so that is accessible in all js belonging to this page
+		// ejs vars are not available in external scripts
+		var guildID = "<%= guild%>";
+	</script>
+	<script type="application/javascript" src="/public/scripts/setting-forms.js"></script>
+
+	<table class="table" style="margin-top: 5%;">
+		<tr>
+			<td>Language</td>
+			<td>
+				<button value="<%= lang %>" name="lang" class="controlButton" id="lang-button">
+					<%= lang %>
+				</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Prefix
+			</td>
+			<td>
+				<form id="prefix-form">
+					<input
+						type="text"
+						name="newPrefix"
+						maxlength="1"
+						class="inputTxt"
+						placeholder="<%= prefix %>"
+					/>
+					<button type="submit" class="controlButton">
+						Submit
+					</button>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>Message Color Theme</td>
+			<td>
+				<form id="color-form">
+					<input name="color" type="color" />
+					<button type="submit" class="controlButton">
+						Submit
+					</button>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>"Now-Playing-Message"</td>
+			<td>
+				<select id="np" class="custom-select">
+					<option value="default">Default (Replace)</option>
+					<option value="stay">Stay</option>
+					<option value="dl">Delete</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Action for empty voice channels</td>
+			<td>
+				<select id="empty" class="custom-select">
+					<option value="default">Default (Disconnect)</option>
+					<option value="pause">Pause</option>
+					<option value="ignore">Ignore (not recommended)</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+
+	<div class="banner-success" id="banner">
+		Update successful!
+	</div>
+	<div class="banner-fail" id="bannerfail">
+		Update failed - Maybe a permission is missing...
+	</div>
+</div>
+<%- include("blocks/footer") %>

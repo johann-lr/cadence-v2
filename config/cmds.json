@@ -1,0 +1,147 @@
+[
+	{
+		"name": "Language",
+		"info": "Changes the guild language (en oder de)",
+		"usuage": "lang de"
+	},
+	{
+		"name": "Play",
+		"info": "Plays a song (yt search, link or spotify)",
+		"usuage": "play wap bap"
+	},
+	{
+		"name": "Next",
+		"info": "Skip a song",
+		"usuage": "skip"
+	},
+	{
+		"name": "Back",
+		"info": "Play previous song",
+		"usuage": "back"
+	},
+	{
+		"name": "Pause",
+		"info": "Pauses the player",
+		"usuage": "pause, p"
+	},
+	{
+		"name": "Volume",
+		"info": "Change the bot's volume (r/reset is also possible)",
+		"usuage": "volume <Number>, v"
+	},
+	{
+		"name": "Clear",
+		"info": "Clear the guild queue",
+		"usuage": "clear"
+	},
+	{
+		"name": "Ping",
+		"info": "Pong",
+		"usuage": "ping"
+	},
+	{
+		"name": "Bot",
+		"info": "Show some general bot info",
+		"usuage": "bot"
+	},
+	{
+		"name": "Connect",
+		"info": "Bot connects to your voice channel",
+		"usuage": "connect, join"
+	},
+	{
+		"name": "Disconnect",
+		"info": "Bot leaves channel",
+		"usuage": "disconnect, leave, stop"
+	},
+	{
+		"name": "Loop",
+		"info": "Play current title in loop",
+		"usuage": "loop"
+	},
+	{
+		"name": "Loop All",
+		"info": "Loops through complete queue",
+		"usuage": "loop all"
+	},
+	{
+		"name": "Shuffle",
+		"info": "Shuffles the queue",
+		"usuage": "shuffle"
+	},
+	{
+		"name": "Resume",
+		"info": "resume a paused player",
+		"usuage": "resume, play"
+	},
+	{
+		"name": "Save",
+		"info": "Saves the queue",
+		"usuage": "save"
+	},
+	{
+		"name": "Load",
+		"info": "Load a saved queue",
+		"usuage": "load"
+	},
+	{
+		"name": "Bitrate",
+		"info": "Change the streams bitrate",
+		"usuage": "bits 55"
+	},
+	{
+		"name": "Prefixes",
+		"info": "show possible prefixes",
+		"usuage": "prefixes"
+	},
+	{
+		"name": "Prefix",
+		"info": "Change the guild prefix",
+		"usuage": "prefix ;"
+	},
+	{
+		"name": "Info",
+		"info": "Informationen about Cadence",
+		"usuage": "info, @Musiker"
+	},
+	{
+		"name": "Now Playing",
+		"info": "Send message about current song",
+		"usuage": "np, nowplaying, song"
+	},
+	{
+		"name": "Queue",
+		"info": "Show queue",
+		"usuage": "list, queue, songs, q"
+	},
+	{
+		"name": "Guild",
+		"info": "Show guild settings/info",
+		"usuage": "guild"
+	},
+	{
+		"name": "Lyrics",
+		"info": "Get lyrics",
+		"usuage": "lyrics"
+	},
+	{
+		"name": "Remove",
+		"info": "Remove song (index or search term)",
+		"usuage": "remove, rm"
+	},
+	{
+		"name": "Main Channel",
+		"info": "Set current channel as music channel",
+		"usuage": "mainchannel"
+	},
+	{
+		"name": "Np (with Args)",
+		"info": "Settings for np messages (now playing) default/replace, stay or delete/dl",
+		"usuage": "np default"
+	},
+	{
+		"name": "Autoplay",
+		"info": "Activate or deactivate autoplay",
+		"usuage": "autoplay, auto, ap"
+	}
+]

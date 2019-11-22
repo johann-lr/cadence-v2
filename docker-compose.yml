@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  cadence:
+    image: jhnlr/cadence
+    container_name: cadence
+    hostname: cadence
+    restart: always
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./logs:/app/logs
+      - ./keys:/app/keys
+  ouroboros:
+    container_name: ouroboros
+    hostname: ouroboros
+    image: pyouroboros/ouroboros
+    environment:
+      - CLEANUP=true
+      - INTERVAL=300
+      - LOG_LEVEL=info
+      - SELF_UPDATE=true
+      - REPO_USER=xxx
+      - REPO_PASS=xxx
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

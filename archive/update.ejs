@@ -1,0 +1,48 @@
+<%- include("../blocks/header", { bot, user, path, version, lastUpdate }) %>
+<div class="container">
+  <script>
+    $(document).ready(function() {
+      $("#upd").click(function() {
+        //$.post("/admin/manage/updatelocal");
+        $(".banner-success").css({ visibility: "visible" });
+        setTimeout(() => {
+          $(".banner-warning").css({ visibility: "hidden" });
+        }, 3000);
+        setTimeout(() => {
+          $(".banner-success").css({ visibility: "hidden" });
+        }, 5000);
+      });
+      $("#upd-first").click(function() {
+        $(".banner-warning").css({ visibility: "visible" });
+      });
+      $("#cancel").click(function() {
+        $(".banner-warning").css({ visibility: "hidden" });
+      });
+    });
+  </script>
+  <h1 class="h1">
+    Update Manager
+  </h1>
+  <br />
+  <li>Current Version: <strong><%= version %></strong></li>
+  <li>Last Update: <strong><%= lastUpdate %></strong></li>
+  <br />
+  <a href="/changes"><button class="controlButton">Changelog</button></a>
+  <button id="upd-first" class="controlButton">Update Cadence from master</button>
+  <br />
+  <div class="banner-warning">
+    Soll das Update wirklich ausgeführt werden?
+    <button id="upd" class="controlButton">Updaten</button>
+    <button class="controlButton" id="cancel">Abbrechen</button>
+  </div>
+  <br />
+  <div class="banner-success">
+    Update wird ausgeführt...
+    <a href="/admin/logs">
+      <button class="controlButton">
+        Logs
+      </button>
+    </a>
+  </div>
+</div>
+<%- include("../blocks/footer") %>

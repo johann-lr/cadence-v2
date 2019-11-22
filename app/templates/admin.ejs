@@ -1,0 +1,25 @@
+<%- include('blocks/header', {bot, user, path}) %>
+<script type="application/javascript">
+	$(document).ready(function() {
+		$("#restart").click(function() {
+			$.post("/admin/reboot");
+		});
+	});
+</script>
+<div class="container">
+	<h1 class="h1">Administration</h1>
+	<div class="row" style="margin-top: 3%;">
+		<div class="col col-4">
+			<a href="/admin/logs"
+				><button class="btn btn-primary"><i class="fas fa-file-alt"></i>&nbsp; Logs</button></a
+			>
+			<a href="/admin/guilds"
+				><button class="btn btn-primary"><i class="fas fa-server"></i>&nbsp; Guilds</button></a
+			>
+			<button id="restart" class="btn btn-primary">
+				<i class="fas fa-power-off"></i>&nbsp; Restart
+			</button>
+		</div>
+	</div>
+</div>
+<%- include("blocks/footer") %>

@@ -1,0 +1,180 @@
+<%- include('blocks/header', {bot, user, path, length, time, img, guild}) %>
+<script type="application/javascript" src="/public/scripts/musicpage.js"></script>
+<script>
+	var guild = "<%=guild%>";
+</script>
+<script src="/public/scripts/background-c.js" type="text/javascript"></script>
+<canvas id="bg" width="800" height="800" style="position: fixed"> </canvas>
+
+<div class="container">
+	<div class="jumbotron">
+		<div>
+			<h1 id="music-control-heading">Music Control <%= bot.guilds.get(guild).name %></h1>
+			<% if (user) { %> <% let guilds = []; user.guilds.forEach(guild => guilds.push(guild.id)); %>
+			<% if (guilds.indexOf(guild)!== -1) { %>
+			<!-- Forms including control buttons -->
+			<div class="box form-control-theme">
+				<!-- resumePlay (play button, normally used to resume player) -->
+				<form id="resumePlay" class="music-form">
+					<button type="submit" class="controlButton">
+						<i class="fas fa-play"></i>
+					</button>
+				</form>
+				<!-- pause -->
+				<form id="pause" class="music-form">
+					<button type="submit" class="controlButton">
+						<i class="fas fa-pause"></i>
+					</button>
+				</form>
+				<!-- Skip -->
+				<form id="skip" class="music-form">
+					<button type="submit" class="controlButton">
+						<i class="fas fa-forward"></i>
+					</button>
+				</form>
+				<!-- stop -->
+				<form id="stop" class="music-form">
+					<button type="submit" class="controlButton title">
+						<i class="fas fa-stop"></i>
+					</button>
+				</form>
+				<!-- shuffle -->
+				<form class="music-form" id="shuffle">
+					<button type="submit" class="controlButton" id="shuffle-btn">
+						<i class="fas fa-random"></i>
+					</button>
+				</form>
+				<% if (bot.guilds.get(guild).voiceConnection) { %> <% if
+				(bot.guilds.get(guild).voiceConnection.dispatcher) { %>
+				<!-- song-link, should already include link if dispatcher exists -->
+				<a href="<%=bot.queue[guild][0].link%>" id="song-link">
+					<%= bot.queue[guild][0].title %>
+				</a>
+				<% }} else { %>
+				<a id="song-link"></a>
+				<% } %>
+				<!-- lyrics-button -->
+				<a href="/music/<%=guild%>/lyrics" id="lyrics-button">
+					<button class="controlButton">Lyrics</button>
+				</a>
+				<!-- connected-channel, low opacity label -->
+				<p id="connected-channel">
+					<% if (bot.guilds.get(guild).voiceConnection) { %> Connected in
+					#<%=bot.guilds.get(guild).voiceConnection.channel.name %> <% } %>
+				</p>
+				<!-- progress bar (#progr)  -->
+				<progress max="<%=length%>" value="<%=time%>" class="main-progress" id="progr"></progress>
+				<% let secsLength = (length / 1000) % 60; %> <% let secsTime = (time/ 1000) % 60 %> <% let
+				minsL = (length /1000 - secsLength) / 60; %> <% let minsT = (time / 1000 - secsTime) / 60;
+				%>
+				<!-- time-label -->
+				<span class="txt" id="time-label">
+					<%= `${minsT}:${Math.floor(secsTime)}` %> / <%= `${minsL}:${secsLength}` %></span
+				>
+				<!-- #nothin-lbl, on of these span elements should be hidden instantly after rendering -->
+				<!--<span class="txt" id="nothin-lbl"> Aktuell keine Wiedergabe</span>-->
+			</div>
+			<!-- vl, volume form -->
+			<form class="form-control-theme" id="vl">
+				<% if (bot.guilds.get(guild).voiceConnection) { %> <% if
+				(bot.guilds.get(guild).voiceConnection.dispatcher) { %>
+				<!-- volume label -->
+				<label id="volume-label" class="txt" for="volume"
+					>Volume (<%= (bot.guilds.get(guild).voiceConnection.dispatcher.volume*100).toFixed(0)
+					%>%)</label
+				>
+				<% } %> <% } else { %>
+				<label class="txt" for="volume" id="volume-label">Volume (--)</label>
+				<!-- end volume-label varis. -->
+				<% } %> <% if (bot.guilds.get(guild).voiceConnection) { %> <% if
+				(bot.guilds.get(guild).voiceConnection.dispatcher) { %>
+				<!-- volume-slider -->
+				<input
+					type="range"
+					min="1"
+					max="200"
+					value="<%=bot.guilds.get(guild).voiceConnection.dispatcher.volume*100%>"
+					class="slider"
+					name="vl"
+					id="volume-slider"
+				/>
+				<% } %> <% } else { %>
+				<!-- same slider (no dispatcher), add onchange attr later -->
+				<input
+					type="range"
+					min="1"
+					max="200"
+					value="100"
+					class="slider"
+					name="vl"
+					id="volume-slider"
+				/>
+				<% } %>
+			</form>
+			<!-- add-form -->
+			<form class="form-control-theme" id="add-form">
+				<label class="txt" for="title">Title</label>
+				<input class="inputTxt" type="text" name="title" maxlength="100" />
+				<button id="add" type="submit" value="Zur Warteschlange">
+					<i class="fas fa-plus"></i>
+				</button>
+			</form>
+		</div>
+		<div>
+			<br />
+			<br />
+			<h4>Queue</h4>
+			<br />
+			<table class="table" id="queue-table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Added by</th>
+						<th>
+							<button class="btnIn">
+								<a class="title" id="clear-btn" href="/music/<%=guild%>/clear">Clear</a>
+							</button>
+						</th>
+					</tr>
+				</thead>
+
+				<tbody id="queue-body">
+					<% if (bot.queue[guild]) for (var i = 1; i < bot.queue[guild].length; i++) { %>
+					<tr>
+						<td>
+							<a class="linki" href="<%= bot.queue[guild][i].link %>">
+								<%= bot.queue[guild][i].title %></a
+							>
+						</td>
+						<td>
+							<%= bot.users.get(bot.queue[guild][i].req).tag %>
+						</td>
+						<td>
+							<form
+								class="removeFromQ"
+								method="POST"
+								action="/music/<%= guild %>/remove"
+								id="removeFromQ"
+							>
+								<button class="controlButton" type="submit" value="<%= i %>" name="position">
+									<i class="far fa-trash-alt"></i>
+								</button>
+							</form>
+						</td>
+						<% } %>
+					</tr>
+				</tbody>
+			</table>
+			<% } else { %>
+			<p class="notLoggedIn">You're not a member of <%= guild.name %> :/</p>
+			<a href="https://wowenwilsonquiz.com"
+				><button class="controlButton">Ok, nevermind...</button></a
+			>
+			<% } %> <% } else { %>
+			<p class="notLoggedIn">You have to sign in to access the control page!</p>
+			<a href="/login"><button class="controlButton">Login >></button></a>
+			<% } %>
+		</div>
+	</div>
+</div>
+<% include ./blocks/footer %>

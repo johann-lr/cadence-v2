@@ -1,0 +1,46 @@
+<%- include('blocks/header', {bot, user, path, music}) %>
+<div class="container">
+  <% let link = music ? "/music" : "/guilds" %>
+  <% let guilds = bot.guilds.map(x => x.id); %> <% for (let i=0;i<user.guilds.length;i++) { %>
+    <% if (guilds.indexOf(user.guilds[i].id) != -1) { %>
+    <a href="<%=link%>/<%=user.guilds[i].id%>" class="guild-item-a">
+        <% if (user.guilds[i].icon) { %>
+        <div class="guild-image-wrapper">
+          <img
+            src="<%= bot.guilds.get(user.guilds[i].id).iconURL %>"
+            alt="<%= bot.guilds.get(user.guilds[i].id).name %>"
+            width="160"
+            height="160"
+            class="align-top rounded-circle avatarHover"
+          />
+          <div class="center-text"><%= user.guilds[i].name %></div>
+        </div>
+        <% } else { %>
+        <div class="guild-image-wrapper">
+        <canvas
+          style="background-color: #7289da"
+          class="d-inline-block align-top rounded-circle avatarHover d-flex mr-3"
+          id="<%= user.guilds[i].name.split(' ').join('').replace(`'`, ``) %>"
+          width="160"
+          height="160"
+        ></canvas>
+        <div class="center-text"><%= user.guilds[i].name %></div>
+        </div>
+        <!-- Script that creates guild abbr. if there's no image for canvas element-->
+        <script>
+          function draw() {
+            const ctx = document
+              .getElementById("<%= user.guilds[i].name.split(' ').join('').replace(`'`, ``) %>")
+              .getContext("2d");
+            ctx.font = "50px Arial";
+            ctx.textAlign = "center";
+            ctx.fillStyle = "white";
+            ctx.fillText("<%= user.guilds[i].name.split(' ').map(v => v[0]).join('') %>", 80, 95);
+          }
+          draw();
+        </script>
+        <% } %>
+      <% } %> <% } %>
+  </a>
+</div>
+</div>

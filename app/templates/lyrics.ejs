@@ -1,0 +1,14 @@
+<%- include('blocks/header', {bot, user, path, content}) %>
+<div class="container">
+	<h2 class="display-2">
+		Lyrics <% if (typeof content != "string") { %> - <%=content.title%><% } %>
+	</h2>
+	<br />
+	<% if (typeof content == "string") { %> <%= content %> <% } else { %>
+	<div class="box">
+		<pre><%= content.lyrics %></pre>
+		<p class="txt">Lyrics provided by the Genius (c) API</p>
+	</div>
+	<% } %>
+</div>
+<% include ./blocks/footer %>

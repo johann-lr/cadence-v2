@@ -1,0 +1,33 @@
+# Node
+node_modules/
+package-lock.json
+
+# Log files
+*.log
+# dashboard session and databases
+*ldb
+CURRENT
+LOCK
+LOG*
+MANI*
+*.sql
+*.sqlite*
+# mongo db
+data/db
+
+# saved docker images
+*.tar
+
+# coverage
+.nyc_output
+/coverage
+
+# macOS
+.DS_STORE
+
+# ssl certs
+keys/
+
+# IDEs
+.idea/
+.vscode/

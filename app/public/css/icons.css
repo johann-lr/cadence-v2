@@ -1,0 +1,106 @@
+/* All rights go to Mobirise */
+@charset "UTF-8";
+@font-face {
+	font-family: "socicon";
+	src: url("../icon/socicon.eot");
+	src: url("../icon/socicon.eot?#iefix") format("embedded-opentype"),
+		url("../icon/socicon.woff") format("woff"), url("../icon/socicon.ttf") format("truetype"),
+		url("../icon/socicon.svg#socicon") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+[data-icon]:before {
+	font-family: "socicon" !important;
+	content: attr(data-icon);
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-variant: normal !important;
+	text-transform: none !important;
+	/*speak: none;*/
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="socicon-"]:before,
+[class*=" socicon-"]:before {
+	font-family: "socicon" !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-variant: normal !important;
+	text-transform: none !important;
+	/*speak: none;*/
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+	font-family: "mobirise-icons-bold";
+	src: url("/public/icon/mobirise-icons-bold.eot?m1l4yr");
+	src: url("/public/icon/mobirise-icons-bold.eot?m1l4yr#iefix") format("embedded-opentype"),
+		url("/public/icon/mobirise-icons-bold.ttf?m1l4yr") format("truetype"),
+		url("/public/icon/mobirise-icons-bold.woff?m1l4yr") format("woff"),
+		url("/public/icon/mobirise-icons-bold.svg?m1l4yr#mobirise-icons-bold") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="mbrib-"],
+[class*="mbrib-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: "mobirise-icons-bold" !important;
+	/*speak: none;*/
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.socicon-mail:before {
+	content: "\e01f";
+}
+.socicon-github:before {
+	content: "\e030";
+}
+.socicon-spotify:before {
+	content: "\e04e";
+}
+.socicon-youtube:before {
+	content: "\e051";
+}
+.socicon-500px:before {
+	content: "\e056";
+}
+.mbrib-github:before {
+	content: "\e932";
+}
+.mbrib-globe-2:before {
+	content: "\e933";
+}
+.mbrib-globe:before {
+	content: "\e934";
+}
+.mbrib-contact-form:before {
+	content: "\e91d";
+}
+.mbrib-smile-face:before {
+	content: "\e975";
+}
+.mbrib-sites:before {
+	content: "\e974";
+}
+.mbrib-github:before {
+	content: "\e932";
+}
+.mbrib-globe-2:before {
+	content: "\e933";
+}
+.mbrib-globe:before {
+	content: "\e934";
+}

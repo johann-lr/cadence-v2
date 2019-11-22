@@ -1,0 +1,27 @@
+<%- include('blocks/header', { bot, user, path, guild, guildID }) %>
+<div class="container">
+	<h1 class="h1"><%= guild.name %></h1>
+	<br />
+	<% let guilds = []; user.guilds.forEach(g => guilds.push(g.id)); %> <% if
+	(guilds.indexOf(guildID)!= -1 || bot.config.admins.indexOf(user.id) != -1) { %>
+	<div class="row">
+		<div class="col col-4"><%- include("blocks/guild-card", {guild}) %></div>
+		<br />
+		<iframe
+			class="card-p"
+			src="
+        https://discordapp.com/widget?id=<%=guild.id%>&theme=dark"
+			width="350"
+			height="500"
+			allowtransparency="true"
+			frameborder="0"
+		></iframe>
+		<% } else { %>
+		<p class="txt">
+			You're not a member of that guild ;)
+		</p>
+		<% } %>
+	</div>
+
+	<% include ./blocks/footer %>
+</div>

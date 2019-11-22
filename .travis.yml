@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - "11.10.1"
+
+# only check new commits on /dev
+branches:
+  only:
+    - dev
+
+# Discord webhook after build suceeded or failed
+# get script that does this job from github and run it
+# WEBHOOK_URL is the discord-webhook's url, set as env in travis
+after_success:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh success $WEBHOOK_URL
+after_failure:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL

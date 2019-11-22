@@ -1,0 +1,33 @@
+# node
+/node_modules/
+
+# docker
+.dockerignore
+Dockerfile
+
+*.yml
+.eslint*
+logs/
+docker.sh
+
+# git stuff
+.git/
+.git*
+
+# directories
+/archive/
+/images/
+/tests/
+/docker/
+/data/db
+
+# Info files
+README.md
+LICENSE
+documentation/API.md
+documentation/*example.md
+documentation/docker.md
+
+# IDE
+.idea/
+.vscode/

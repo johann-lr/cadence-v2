@@ -1,0 +1,31 @@
+<%- include('blocks/header', {bot, user, path, userData}) %>
+<div class="container">
+    <h2> Deine persönlichen Statistiken </h2>
+    <br />
+    <% if (userData != null) { %>
+    <div class="jumbotron">
+        <div class="box" >
+            <p class="txt"> Bisherige Online Zeit:
+            <strong><%= (userData.onlineTime/60/60).toFixed(1) %>h</strong>
+            </p>
+        </div>
+        <div class="box">
+            <p class="txt"> Bisherige Idle Zeit:
+            <strong><%= (userData.idleTime/60/60).toFixed(1) %>h</strong>
+            </p>
+        </div>
+        <br />
+
+        <% for (var i = 0; i<userData.games.length;i++) { %>
+        <% let cD = userData.games[i].key.slice(19); %>
+        <div class="box">
+            <p class="txt"><%= cD %>: <strong><%= (userData.games[i].value/60/60).toFixed(1) %>h</strong>
+            </p>
+        </div>
+        <% } %>
+    </div>
+    <% } else { %>
+        <p class="txt"> Bisher keine Statistiken - No statistics yet </p>
+    <% } %>
+</div>
+<% include ./blocks/footer %>

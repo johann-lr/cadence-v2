@@ -1,0 +1,14 @@
+<%- include('blocks/header', {bot, user, path, content}) %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script>
+	var converter = new showdown.Converter(),
+		text = `<%= content %>`,
+		html = converter.makeHtml(text);
+	$(document).ready(function() {
+		$("#pre").html(html);
+	});
+</script>
+<div class="container" id="content">
+	<pre id="pre" style="background-color: #2a2d32;color:white"></pre>
+</div>
+<% include ./blocks/footer %>

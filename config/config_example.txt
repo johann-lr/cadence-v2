@@ -1,0 +1,40 @@
+{
+  "token": "Discord client token",
+  "id": "bot's id",
+  "ksoft": "ksoft api key - lyrics api"
+  "yt": {
+    "key": "youtube api key",
+    "key2": "...",
+    "key3": "..."
+  },
+  "spotify": {
+      "id": "spotify client id",
+      "secret": "spotify api key"
+  }
+  "prefix": "!",
+  "prefixes": ["!", "§", "%", "$", "&", "/", "=", "?", "+", "-", ".", ";", ">", "*"],
+  "standardGame": "info",
+  "owner": "id",
+  "log": "discord channel required for some logging",
+  "admins": ["at least one discord id (of owner)"],
+  "support": ["optional"]
+  "presences": ["dnd", "online", "idle", "invisible"], // constant
+  "colors": {
+    "red": 16072520,
+    "green": 6681700,
+    "blurple": 7506394,
+    "dgreen": 3256456,
+    "lello": 16777060,
+    "blue": 5284095,
+    "blueII": 7420414,
+    "dcGrey": 3553599
+  },
+  "dashboard": {
+    "oauthSecret": "from discord dev page",
+    "callbackURL": "yourdomain/callback",
+    "sessionSecret": "from discord dev page",
+    "domain": "yourdomain.xyz",
+    "http": 80,
+    "https": 443
+  }
+}

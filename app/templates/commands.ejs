@@ -1,0 +1,16 @@
+<%- include('blocks/header', {bot, user, path, list}) %>
+
+<div class="container">
+	<h1 class="h1">Commands</h1>
+	<br />
+	<% for (let i = 0; i < list.length; i++) { %>
+	<div class="blocks">
+		<div class="card"><h3 class="card-header"><%= list[i].name %></h3></div>
+		<div class="card-body">
+			<p class="card-text"><%= list[i].info %></p>
+			<h6 class="card-subtitle text-muted">Example/Usage: <%= list[i].usuage %></h6>
+			<br />
+		</div>
+	</div>
+	<% } %>
+</div>
