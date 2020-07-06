@@ -7,6 +7,11 @@
 
 ---
 
+## Notice!
+
+This repository contains the old version (v2). The client has been rewritten with the latest libraries and coding standards (v3) using Typescript. This rewrite can be tested on every discord server: <https://discordapp.com/api/oauth2/authorize?client_id=698914997400502272&permissions=36792384&scope=bot>
+The source code will be released later after final client release.
+
 **Cadence Music Bot for discord** <br>
 Language support for german, english and spanish (french coming soon)
 
